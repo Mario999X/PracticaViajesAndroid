@@ -4,9 +4,13 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/mario/AndroidStudioProjects/PracticaViajesAndroid/app/src/main/res/layout/activity_main.xml" value="0.22" />
-        <entry key="..\:/Users/mario/AndroidStudioProjects/PracticaViajesAndroid/app/src/main/res/layout/fragment_ajustes.xml" value="0.1" />
+        <entry key="..\:/Users/mario/AndroidStudioProjects/PracticaViajesAndroid/app/src/main/res/layout/dialog_new_lugar.xml" value="0.33" />
+        <entry key="..\:/Users/mario/AndroidStudioProjects/PracticaViajesAndroid/app/src/main/res/layout/fragment_ajustes.xml" value="0.33" />
         <entry key="..\:/Users/mario/AndroidStudioProjects/PracticaViajesAndroid/app/src/main/res/layout/fragment_listado_lugares.xml" value="0.35260416666666666" />
+        <entry key="..\:/Users/mario/AndroidStudioProjects/PracticaViajesAndroid/app/src/main/res/layout/fragment_listado_viajeros.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/mario/AndroidStudioProjects/PracticaViajesAndroid/app/src/main/res/layout/lugares_view.xml" value="0.25" />
         <entry key="..\:/Users/mario/AndroidStudioProjects/PracticaViajesAndroid/app/src/main/res/menu/bottom_menu_layout.xml" value="0.1" />
+        <entry key="..\:/Users/mario/AndroidStudioProjects/PracticaViajesAndroid/app/src/main/res/menu/menu_listado_lugares.xml" value="0.36666666666666664" />
       </map>
     </option>
   </component>
