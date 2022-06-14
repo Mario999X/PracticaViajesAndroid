@@ -22,7 +22,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.practicaviajesandroid.R;
-import com.example.practicaviajesandroid.adapters.LugaresAdapter;
+import com.example.practicaviajesandroid.adapters.LugarAdapter;
 import com.example.practicaviajesandroid.data.DataRoomDB;
 import com.example.practicaviajesandroid.models.LugarEntity;
 
@@ -36,7 +36,7 @@ public class ListadoLugares extends Fragment {
 
     RecyclerView recyclerLugares;
     List<LugarEntity> lugarEntities = new ArrayList<>();
-    LugaresAdapter lugaresAdapter;
+    LugarAdapter lugarAdapter;
     LinearLayoutManager llm;
 
     String opcionSpinner;
@@ -61,8 +61,8 @@ public class ListadoLugares extends Fragment {
         recyclerLugares = v.findViewById(R.id.recyclerLugares);
         llm = new LinearLayoutManager(getContext());
         recyclerLugares.setLayoutManager(llm);
-        lugaresAdapter = new LugaresAdapter(lugarEntities, getActivity());
-        recyclerLugares.setAdapter(lugaresAdapter);
+        lugarAdapter = new LugarAdapter(lugarEntities, getActivity());
+        recyclerLugares.setAdapter(lugarAdapter);
 
         // TOOLBAR + LISTENER
         toolbarListadoLugares = v.findViewById(R.id.toolbarListadoLugares);
@@ -127,17 +127,18 @@ public class ListadoLugares extends Fragment {
                                 // LIMPIAMOS LISTA Y ACTUALIZAMOS
                                 lugarEntities.clear();
                                 lugarEntities = database.lugarDao().getAll();
-                                lugaresAdapter = new LugaresAdapter(lugarEntities, getActivity());
-                                recyclerLugares.setAdapter(lugaresAdapter);
+                                lugarAdapter = new LugarAdapter(lugarEntities, getActivity());
+                                recyclerLugares.setAdapter(lugarAdapter);
 
                                 Toast.makeText(getContext(), "Lugar Agregado", Toast.LENGTH_SHORT).show();
                             }
                         });
                         break;
+
                     case R.id.menu_filtrado_lugar:
                         // CREACION DIALOGO
                         Dialog dialog2 = new Dialog(getContext());
-                        dialog2.setContentView(R.layout.dialog_filter_region);
+                        dialog2.setContentView(R.layout.dialog_filtro_region);
 
                         WindowManager.LayoutParams lp2 = new WindowManager.LayoutParams();
                         lp2.copyFrom(dialog2.getWindow().getAttributes());
@@ -172,8 +173,8 @@ public class ListadoLugares extends Fragment {
 
                                 dialog2.dismiss();
 
-                                lugaresAdapter = new LugaresAdapter(lugarEntities, getActivity());
-                                recyclerLugares.setAdapter(lugaresAdapter);
+                                lugarAdapter = new LugarAdapter(lugarEntities, getActivity());
+                                recyclerLugares.setAdapter(lugarAdapter);
 
                                 Toast.makeText(getContext(), "Filtro Aplicado", Toast.LENGTH_SHORT).show();
                             }

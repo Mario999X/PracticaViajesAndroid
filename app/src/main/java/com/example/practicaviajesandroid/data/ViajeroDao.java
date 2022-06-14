@@ -4,25 +4,25 @@ import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
 
-import com.example.practicaviajesandroid.models.ViajanteEntity;
+import com.example.practicaviajesandroid.models.ViajeroEntity;
 
 import java.util.List;
 
 @Dao
-public interface ViajanteDao {
+public interface ViajeroDao {
 
     @Insert
-    long insert(ViajanteEntity v);
+    long insert(ViajeroEntity v);
 
     @Query("DELETE FROM tabla_viajero")
     void deleteAll();
 
     @Query("SELECT * FROM tabla_viajero")
-    List<ViajanteEntity> getAll();
+    List<ViajeroEntity> getAll();
 
     @Query("SELECT * FROM tabla_viajero where id = :sId")
-    List<ViajanteEntity> selectViajero(Integer sId);
+    List<ViajeroEntity> selectViajero(Integer sId);
 
     @Query("SELECT * FROM tabla_viajero where lugarDestino = :sDestino")
-    List<ViajanteEntity> filterDestino(Integer sDestino);
+    List<ViajeroEntity> filterDestino(String sDestino);
 }

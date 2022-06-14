@@ -7,16 +7,16 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
 import com.example.practicaviajesandroid.models.LugarEntity;
-import com.example.practicaviajesandroid.models.ViajanteEntity;
+import com.example.practicaviajesandroid.models.ViajeroEntity;
 
-@Database(entities = {LugarEntity.class, ViajanteEntity.class}, version = 1)
+@Database(entities = {LugarEntity.class, ViajeroEntity.class}, version = 1)
 public abstract class DataRoomDB extends RoomDatabase {
 
     private static String DATABASE_NAME = "basededatos";
 
     public abstract LugarDao lugarDao();
 
-    public abstract ViajanteDao viajanteDao();
+    public abstract ViajeroDao viajeroDao();
 
     private static volatile DataRoomDB INSTANCE;
 

@@ -44,7 +44,7 @@ public class Ajustes extends Fragment {
                         switch (which) {
                             case DialogInterface.BUTTON_POSITIVE:
                                 database.lugarDao().deleteAll();
-                                database.viajanteDao().deleteAll();
+                                database.viajeroDao().deleteAll();
 
                                 dialog.dismiss();
                                 Toast.makeText(getActivity(), "Eliminación Total Completada", Toast.LENGTH_SHORT).show();

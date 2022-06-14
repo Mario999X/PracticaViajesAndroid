@@ -20,5 +20,6 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerLugares"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        tools:listitem="@layout/lugares_view" />
 </LinearLayout>

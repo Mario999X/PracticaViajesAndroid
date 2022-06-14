@@ -15,12 +15,12 @@ import com.example.practicaviajesandroid.models.LugarEntity;
 
 import java.util.List;
 
-public class LugaresAdapter extends RecyclerView.Adapter<LugaresAdapter.ViewHolder> {
+public class LugarAdapter extends RecyclerView.Adapter<LugarAdapter.ViewHolder> {
 
     List<LugarEntity> lugarEntitiesList;
     Activity context;
 
-    public LugaresAdapter(List<LugarEntity> lugarEntitiesList, Activity context) {
+    public LugarAdapter(List<LugarEntity> lugarEntitiesList, Activity context) {
         this.lugarEntitiesList = lugarEntitiesList;
         this.context = context;
     }
