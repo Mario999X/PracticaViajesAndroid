@@ -3,7 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/mario/AndroidStudioProjects/PracticaViajesAndroid/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/mario/AndroidStudioProjects/PracticaViajesAndroid/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/Users/mario/AndroidStudioProjects/PracticaViajesAndroid/app/src/main/res/layout/fragment_ajustes.xml" value="0.1" />
+        <entry key="..\:/Users/mario/AndroidStudioProjects/PracticaViajesAndroid/app/src/main/res/layout/fragment_listado_lugares.xml" value="0.35260416666666666" />
+        <entry key="..\:/Users/mario/AndroidStudioProjects/PracticaViajesAndroid/app/src/main/res/menu/bottom_menu_layout.xml" value="0.1" />
       </map>
     </option>
   </component>
