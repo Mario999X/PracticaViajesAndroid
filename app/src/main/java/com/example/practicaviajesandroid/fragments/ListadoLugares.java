@@ -68,6 +68,10 @@ public class ListadoLugares extends Fragment {
         toolbarListadoLugares = v.findViewById(R.id.toolbarListadoLugares);
         // El menu puede ser inflado desde el editor de layout
 
+        // String [] rellenado para los spinners
+        String [] regiones = new String[]{"Europa", "América", "Asia", "África"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_dropdown_item, regiones);
+
         toolbarListadoLugares.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
@@ -91,8 +95,9 @@ public class ListadoLugares extends Fragment {
                         Button btnAddLugar = dialog.findViewById(R.id.btnAddLugar);
 
                         // Preparar & Rellenar Spinner
-                        String [] regiones = new String[]{"Europa", "América", "Asia", "África"};
-                        ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_dropdown_item, regiones);
+                        // En este caso, los elementos del spinner se encuentra en la creacion de la vista, ya que voy a usar...
+                        // ...dos iguales
+
                         spinnerRegionDialog.setAdapter(adapter);
                         spinnerRegionDialog.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                             @Override
@@ -130,6 +135,50 @@ public class ListadoLugares extends Fragment {
                         });
                         break;
                     case R.id.menu_filtrado_lugar:
+                        // CREACION DIALOGO
+                        Dialog dialog2 = new Dialog(getContext());
+                        dialog2.setContentView(R.layout.dialog_filter_region);
+
+                        WindowManager.LayoutParams lp2 = new WindowManager.LayoutParams();
+                        lp2.copyFrom(dialog2.getWindow().getAttributes());
+                        lp2.width = WindowManager.LayoutParams.MATCH_PARENT;
+                        lp2.height = WindowManager.LayoutParams.WRAP_CONTENT;
+
+                        dialog2.show();
+                        dialog2.getWindow().setAttributes(lp2);
+
+                        // ELEMENTOS DIALOGO
+                        Spinner spinnerFilterRegion = dialog2.findViewById(R.id.spinnerFilterRegion);
+                        Button btnFilterRegion = dialog2.findViewById(R.id.btnFilterRegion);
+
+                        // PREPARAR SPINNER
+                        spinnerFilterRegion.setAdapter(adapter);
+                        spinnerFilterRegion.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                            @Override
+                            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                                opcionSpinner = adapterView.getItemAtPosition(i).toString();
+                            }
+
+                            @Override
+                            public void onNothingSelected(AdapterView<?> adapterView) {
+                            }
+                        });
+
+                        btnFilterRegion.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                lugarEntities.clear();
+                                lugarEntities = database.lugarDao().filterRegion(opcionSpinner);
+
+                                dialog2.dismiss();
+
+                                lugaresAdapter = new LugaresAdapter(lugarEntities, getActivity());
+                                recyclerLugares.setAdapter(lugaresAdapter);
+
+                                Toast.makeText(getContext(), "Filtro Aplicado", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
                 }
                 return false;
             }
