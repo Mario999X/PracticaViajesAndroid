@@ -23,4 +23,7 @@ public interface LugarDao {
     @Query("SELECT * FROM tabla_lugar WHERE region = :sRegion")
     List<LugarEntity> filterRegion(String sRegion);
 
+    @Query("SELECT DISTINCT nombre FROM tabla_lugar")
+    String[] getNombreLugares();
+
 }

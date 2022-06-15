@@ -4,7 +4,7 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "tabla_viajero")
-public class ViajanteEntity {
+public class ViajeroEntity {
 
     @PrimaryKey(autoGenerate = true)
     Integer id;
