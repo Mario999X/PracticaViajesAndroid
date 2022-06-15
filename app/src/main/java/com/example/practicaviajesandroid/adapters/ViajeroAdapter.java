@@ -5,13 +5,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.practicaviajesandroid.R;
+import com.example.practicaviajesandroid.fragments.VerLugar;
+import com.example.practicaviajesandroid.fragments.VerViajero;
 import com.example.practicaviajesandroid.models.ViajeroEntity;
+import com.example.practicaviajesandroid.utils.ElementoSeleccionado;
 
 import java.util.List;
 
@@ -51,6 +56,7 @@ public class ViajeroAdapter extends RecyclerView.Adapter<ViajeroAdapter.ViewHold
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
+        LinearLayout layoutViajeroView;
         TextView textNombreViajeroListado, textIdViajeroListado, textDestinoListado;
         ImageView imageViajeroListado;
 
@@ -61,6 +67,21 @@ public class ViajeroAdapter extends RecyclerView.Adapter<ViajeroAdapter.ViewHold
             textIdViajeroListado = itemView.findViewById(R.id.textIdViajeroListado);
             textDestinoListado = itemView.findViewById(R.id.textDestinoListado);
             imageViajeroListado = itemView.findViewById(R.id.imageViajeroListado);
+            layoutViajeroView = itemView.findViewById(R.id.layoutViajeroView);
+
+            onClickDetalle();
+        }
+
+        private void onClickDetalle(){
+            layoutViajeroView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    ElementoSeleccionado.getInstance().setViajero(viajeroEntityList.get(getAdapterPosition()));
+
+                    AppCompatActivity activity = (AppCompatActivity) view.getContext();
+                    activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragLayout, new VerViajero()).addToBackStack(null).commit();
+                }
+            });
         }
     }
 }

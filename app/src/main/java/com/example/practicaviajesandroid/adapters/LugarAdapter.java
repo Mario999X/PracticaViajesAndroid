@@ -5,13 +5,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.practicaviajesandroid.R;
+import com.example.practicaviajesandroid.fragments.VerLugar;
 import com.example.practicaviajesandroid.models.LugarEntity;
+import com.example.practicaviajesandroid.utils.ElementoSeleccionado;
 
 import java.util.List;
 
@@ -50,6 +54,7 @@ public class LugarAdapter extends RecyclerView.Adapter<LugarAdapter.ViewHolder> 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
+        LinearLayout layoutLugarView;
         TextView textListadoLugarNombre, textListadoLugarRegion;
         ImageView imageListadoLugares;
 
@@ -58,6 +63,21 @@ public class LugarAdapter extends RecyclerView.Adapter<LugarAdapter.ViewHolder> 
             textListadoLugarNombre = itemView.findViewById(R.id.textListadoLugaresNombre);
             textListadoLugarRegion = itemView.findViewById(R.id.textListadoRegionLugares);
             imageListadoLugares = itemView.findViewById(R.id.imageListadoLugares);
+            layoutLugarView = itemView.findViewById(R.id.layoutLugarView);
+
+            onClickDetalle();
+        }
+
+        private void onClickDetalle(){
+            layoutLugarView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    ElementoSeleccionado.getInstance().setLugar(lugarEntitiesList.get(getAdapterPosition()));
+
+                    AppCompatActivity activity = (AppCompatActivity) view.getContext();
+                    activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragLayout, new VerLugar()).addToBackStack(null).commit();
+                }
+            });
         }
     }
 }
